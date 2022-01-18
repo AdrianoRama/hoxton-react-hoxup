@@ -1,3 +1,13 @@
+import Login from "./Components/Login-page";
+import MainApp from "./Components/main-app";
+
+
+
 export default function App() {
-  return "I'm pretty empty right now..."
+  return (
+    <div className="App">
+      <Login />
+      <MainApp />
+    </div>
+  );
 }
