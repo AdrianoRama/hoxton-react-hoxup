@@ -1,6 +1,11 @@
+import MainMessages from "./Main-messages-list";
+import SideChatList from "./Side-chat-list";
+import '../styles/index.css'
+import { useParams } from "react-router-dom";
 
 
 export default function MainApp() {
+
     return (<div className="main-wrapper">
         {/* <!-- Side Panel --> */}
         <aside>
@@ -25,7 +30,7 @@ export default function MainApp() {
                     value=""
                 />
             </form>
-
+            <SideChatList />
             {/* <!--Side Chat List goes here. Check side-chat-list.html --> */}
             {/* <!--  --> */}
         </aside>
@@ -34,7 +39,7 @@ export default function MainApp() {
         <main className="conversation">
             {/* <!-- Chat header --> */}
             <header className="panel"></header>
-
+            <MainMessages />
             {/* <!--The Messages List will go here. Check main-messages-list.html--> */}
             <ul className="conversation__messages"></ul>
 

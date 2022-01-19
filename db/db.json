@@ -27,6 +27,39 @@
       "phoneNumber": "+696969696969",
       "avatar": "https://avatars.dicebear.com/api/avataaars/NicolasMarcora.svg",
       "id": 4
+    },
+    {
+      "user": {
+        "firstName": "aaaa",
+        "lastName": "aaaa",
+        "phoneNumber": "aaaa",
+        "id": 5
+      },
+      "id": 5
+    },
+    {
+      "user": {
+        "firstName": "jalsdkjalksd",
+        "lastName": "akdsjlakjds",
+        "phoneNumber": "kasdjlaks",
+        "avatar": "https://avatars.dicebear.com/api/avataaars/jalsdkjalksdakdsjlakjds.svg"
+      },
+      "id": 6
+    },
+    {
+      "newUser": {
+        "firstName": "Adriano",
+        "lastName": "Rama",
+        "phoneNumber": ""
+      },
+      "id": 7
+    },
+    {
+      "firstName": "Adriano",
+      "lastName": "Rama",
+      "phoneNumber": "",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/AdrianoRama.svg",
+      "id": 8
     }
   ],
   "messages": [],
