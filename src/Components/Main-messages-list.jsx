@@ -1,56 +1,27 @@
 
 
-export default function MainMessages() {
+function Message({ id, message }) {
+    console.log(message, id)
+    const className = message.userId === Number(id) ? "outgoing" : ""
+
+    return <li className={className}><p>{message.messageText}</p></li>
+}
+
+export default function MainMessages({ currentConversation, id }) {
+
+
+
+    const messages = currentConversation?.messages
+
+    const msgs = messages?.map((message) => {
+
+        return <Message id={id} message={message} />
+    })
+
     return (<ul className="conversation__messages">
-        <li className="outgoing">
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus excepturi
-                non odit quisquam et assumenda suscipit maxime officiis repellat possimus!
-                Soluta illum rerum eligendi labore ut nemo quod voluptates ad.
-            </p>
-        </li>
 
-        {/* <!-- Outgoing messages are messages sent by the current logged in user --> */}
-        <li className="outgoing"><p>Lorem ipsum...</p></li>
-        {/* <!--  --> */}
+        {msgs}
 
-        {/* <!-- This one doesnt belong to the current logged in user --> */}
-        <li>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus excepturi
-                non odit quisquam et assumenda suscipit maxime officiis repellat possimus!
-            </p>
-        </li>
-
-        {/* <!--  --> */}
-        <li className="outgoing"><p>Some test message</p></li>
-        <li className="outgoing"><p>more messagesss!!!</p></li>
-        <li className="outgoing"><p>more messagesss!!!</p></li>
-        <li className="outgoing">
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus excepturi
-                non odit quisquam et assumenda suscipit maxime officiis repellat possimus!
-                Soluta illum rerum eligendi labore ut nemo quod voluptates ad.Lorem ipsum
-                dolor sit amet consectetur, adipisicing elit. Natus excepturi non odit
-                quisquam et assumenda suscipit maxime officiis repellat possimus! Soluta
-                illum rerum eligendi labore ut nemo quod voluptates ad.Lorem ipsum dolor
-                sit amet consectetur, adipisicing elit. Natus excepturi non odit quisquam
-                et assumenda suscipit maxime officiis repellat possimus! Soluta illum
-                rerum eligendi labore ut nemo quod voluptates ad.Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Natus excepturi non odit quisquam et
-                assumenda suscipit maxime officiis repellat possimus! Soluta illum rerum
-                eligendi labore ut nemo quod voluptates ad.Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Natus excepturi non odit quisquam et
-                assumenda suscipit maxime officiis repellat possimus! Soluta illum rerum
-                eligendi labore ut nemo quod voluptates ad.Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Natus excepturi non odit quisquam et
-                assumenda suscipit maxime officiis repellat possimus! Soluta illum rerum
-                eligendi labore ut nemo quod voluptates ad.Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Natus excepturi non odit quisquam et
-                assumenda suscipit maxime officiis repellat possimus! Soluta illum rerum
-                eligendi labore ut nemo quod voluptates ad.
-            </p>
-        </li>
     </ul>
 
 

@@ -29,39 +29,50 @@
       "id": 4
     },
     {
-      "user": {
-        "firstName": "aaaa",
-        "lastName": "aaaa",
-        "phoneNumber": "aaaa",
-        "id": 5
-      },
-      "id": 5
-    },
-    {
-      "user": {
-        "firstName": "jalsdkjalksd",
-        "lastName": "akdsjlakjds",
-        "phoneNumber": "kasdjlaks",
-        "avatar": "https://avatars.dicebear.com/api/avataaars/jalsdkjalksdakdsjlakjds.svg"
-      },
-      "id": 6
-    },
-    {
-      "newUser": {
-        "firstName": "Adriano",
-        "lastName": "Rama",
-        "phoneNumber": ""
-      },
-      "id": 7
-    },
-    {
       "firstName": "Adriano",
       "lastName": "Rama",
       "phoneNumber": "",
       "avatar": "https://avatars.dicebear.com/api/avataaars/AdrianoRama.svg",
       "id": 8
+    },
+    {
+      "firstName": "Adriano",
+      "lastName": "gotthesauce",
+      "phoneNumber": "696969696",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/Adrianogotthesauce.svg",
+      "id": 9
     }
   ],
-  "messages": [],
-  "conversations": []
+  "messages": [
+    {
+      "userId": 1,
+      "messageText": "Hello! 👋 ",
+      "conversationId": 1,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "messageText": "Yo! 👋 ",
+      "conversationId": 2,
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "messageText": "Bro! 👋 ",
+      "conversationId": 2,
+      "id": 3
+    }
+  ],
+  "conversations": [
+    {
+      "userId": 1,
+      "participantId": 2,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "participantId": 3,
+      "id": 2
+    }
+  ]
 }

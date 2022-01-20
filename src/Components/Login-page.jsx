@@ -4,10 +4,12 @@ import { Link, useParams } from "react-router-dom"
 
 
 
-function User(props) {
-    const user = props.user
+function User({ user, signIn }) {
 
-    return (<Link to="/logged-in"><li>
+
+    return (<li onClick={() => {
+        signIn(user)
+    }}>
         <button className="user-selection">
             <img
                 className="avatar"
@@ -18,7 +20,7 @@ function User(props) {
             />
             <h3>{user.firstName + user.lastName}</h3>
         </button>
-    </li></Link>)
+    </li>)
 }
 
 
@@ -48,23 +50,24 @@ function AddUserModal(props) {
     }
 
 
-    return <form className="modal">
-        <h4 id="firstName">First Name</h4>
-        <textarea onChange={(e) => {
-            setFirstName(e.target.value)
-        }} value={firstName} id="firstName" />
-        <h4 id="lastName">Last Name</h4>
-        <textarea onChange={(e) => {
-            setLastName(e.target.value)
-        }} value={lastName} id="lastName" />
-        <h4 id="phoneNumber">Phone Number</h4>
-        <textarea onChange={(e) => {
-            setPhoneNumber(e.target.value)
-        }} value={phoneNumber} id="phoneNumber" />
-        <button onClick={() => {
-            addNewUser()
-        }} type="submit">Create User</button>
-    </form>
+    return <div className="modal-wrapper">
+        <form className="modal">
+            <h4 id="firstName">First Name</h4>
+            <textarea onChange={(e) => {
+                setFirstName(e.target.value)
+            }} value={firstName} id="firstName" />
+            <h4 id="lastName">Last Name</h4>
+            <textarea onChange={(e) => {
+                setLastName(e.target.value)
+            }} value={lastName} id="lastName" />
+            <h4 id="phoneNumber">Phone Number</h4>
+            <textarea onChange={(e) => {
+                setPhoneNumber(e.target.value)
+            }} value={phoneNumber} id="phoneNumber" />
+            <button onClick={() => {
+                addNewUser()
+            }} type="submit">Create User</button>
+        </form></div>
 }
 
 
@@ -76,7 +79,7 @@ export default function Login(props) {
     const setUsers = props.setUsers
 
     const existingUsers = users.map((user) => {
-        return <User user={user} />
+        return <User key={user.id} user={user} signIn={props.signIn} />
     })
 
     return (

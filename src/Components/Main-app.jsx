@@ -1,10 +1,45 @@
 import MainMessages from "./Main-messages-list";
 import SideChatList from "./Side-chat-list";
 import '../styles/index.css'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
-export default function MainApp() {
+export default function MainApp({ currentUser, logOut, users }) {
+
+    const [conversations, setConversations] = useState([])
+    const [currentConversation, setCurrentConversation] = useState(null)
+
+    const params = useParams()
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (currentUser === null) {
+            navigate('/')
+        }
+    }, [currentUser])
+
+
+
+    useEffect(() => {
+        if (params.id) {
+            fetch(`http://localhost:4000/conversations/${params.id}?_embed=messages`)
+                .then(response => response.json())
+                .then(conversationFromServer => setCurrentConversation(conversationFromServer))
+        }
+    }, [params.id])
+
+    useEffect(() => {
+
+        if (currentUser === null) return
+
+        fetch(`http://localhost:4000/conversations?userId=${currentUser.id}`)
+            .then(response => response.json())
+            .then(conversations => setConversations(conversations))
+    }, [currentUser])
+
+    if (!currentUser) return null
 
     return (<div className="main-wrapper">
         {/* <!-- Side Panel --> */}
@@ -15,10 +50,13 @@ export default function MainApp() {
                     className="avatar"
                     width="50"
                     height="50"
-                    src="https://robohash.org/2"
+                    src={currentUser.avatar}
                     alt=""
                 />
-                <h3>Tin Man</h3>
+                <h3>{currentUser.firstName}</h3>
+                <button className="log-out" onClick={() => {
+                    logOut()
+                }}>LOG OUT</button>
             </header>
 
             {/* <!-- Search form --> */}
@@ -30,19 +68,18 @@ export default function MainApp() {
                     value=""
                 />
             </form>
-            <SideChatList />
-            {/* <!--Side Chat List goes here. Check side-chat-list.html --> */}
-            {/* <!--  --> */}
+            <SideChatList conversations={conversations} currentUser={currentUser} users={users} />
         </aside>
 
         {/* <!-- Main Chat Section --> */}
         <main className="conversation">
             {/* <!-- Chat header --> */}
             <header className="panel"></header>
-            <MainMessages />
-            {/* <!--The Messages List will go here. Check main-messages-list.html--> */}
-            <ul className="conversation__messages"></ul>
 
+            {/* <!--The Messages List will go here. Check main-messages-list.html--> */}
+            {params.id ? (
+                <MainMessages currentConversation={currentConversation} id={params.id} />) : null
+            }
             {/* <!-- Message Box --> */}
             <footer>
                 <form className="panel conversation__message-box">
